@@ -15,9 +15,9 @@ const buttonVariants = cva(
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 dark:bg-stone-200",
-        white: " bg-stone-50 text-stone-800 dark:text-stone-200 dark:bg-stone-50",
-        black: " bg-stone-700 text-stone-200",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 dark:bg-stone-400",
+        white: " bg-transparent dark:text-stone-50 ",
+        black: " bg-stone-700 dark:bg-stone-50 text-stone-200 dark:text-stone-900",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
@@ -38,7 +38,7 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
   const Comp = asChild ? Slot : "button"
   return (
     (<Comp
-      className={cn(buttonVariants({ variant, size, className }) ,"dark:bg-[#171717]")}
+      className={cn(buttonVariants({ variant, size, className }))}
       ref={ref}
       {...props} />)
   );
