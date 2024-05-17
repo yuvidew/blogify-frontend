@@ -7,7 +7,7 @@ import { RectangleEllipsis, User } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 
-export default function signUp(){
+export default function SignUp(){
     const [formData , setFormData] = useState({
         email : "",
         password : ""
