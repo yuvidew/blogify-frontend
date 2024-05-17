@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/Provider/ThemeProvider";
 import { ViewTransitions } from "next-view-transitions";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
     <ViewTransitions>
     <html lang="en">
       <body className={`${inter.className} dark:bg-[#171717]`}>
+      <Suspense fallback={<div>Loading...</div>}>
       <ThemeProvider 
           attribute = "class"
           defaultTheme = "system"
@@ -38,6 +40,7 @@ export default function RootLayout({ children }) {
       >
         {children}
       </ThemeProvider>
+      </Suspense>
       </body>
     </html>
     </ViewTransitions>
