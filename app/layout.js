@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <ViewTransitions>
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} dark:bg-[#171717]`}>
       <ThemeProvider 
           attribute = "class"
           defaultTheme = "system"
