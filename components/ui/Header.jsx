@@ -7,6 +7,7 @@ import ModeToggle from '@/components/ui/ModeToggle'
 import { Search } from '../../app/(home)/_HomeComp/Search'
 import { Button } from '@/components/ui/button'
 import { Edit } from 'lucide-react'
+import { SignInUpBtn } from './SignInUpbtn'
 
 export const Header = () => {
     return (
@@ -17,10 +18,12 @@ export const Header = () => {
                         <Image 
                             src={logo} 
                             className=' w-[3rem] h-[3rem] object-contain dark:hidden' 
+                            alt='logo'
                         />
                         <Image 
                             src={logoDark} 
                             className=' w-[3rem] h-[3rem] object-contain hidden dark:block' 
+                            alt='logo'
                         />
                     </div>
                     <div className='h-[5rem] flex items-center justify-start'>
@@ -30,25 +33,10 @@ export const Header = () => {
                 <div className=' flex items-center justify-end gap-3'>
                     <Link href={'/write'} >
                         <Button variant = "secondary" >
-                            <Edit className='h-5 w-5 mr-2'/> {" "} Write
+                            <Edit className='h-5 w-5 '/> {" "} <span className='lg:block md:hidden hidden ml-2'>Write</span>
                         </Button>
                     </Link>
-                    <Link href={'/signin'}>
-                        <Button 
-                            variant = "black"
-                            size = "sm" 
-                        >
-                            Sign In
-                        </Button>
-                    </Link>
-                    <Link href={'/signup'}>
-                        <Button 
-                            variant = "white" 
-                            size = "sm" 
-                        >
-                            Sign Up
-                        </Button>
-                    </Link>
+                    <SignInUpBtn/>
                     <ModeToggle/>
                 </div>
             </main>
