@@ -7,7 +7,7 @@ import ModeToggle from '@/components/ui/ModeToggle'
 import { Search } from '../../app/(home)/_HomeComp/Search'
 import { Button } from '@/components/ui/button'
 import { Edit } from 'lucide-react'
-import { SignInUpBtn } from '@/components/ui/SignInUpbtn'
+import { SignInUpBtn } from '@/components/ui/SignInUpBtn'
 
 export const Header = () => {
     return (
