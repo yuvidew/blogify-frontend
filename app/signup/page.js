@@ -29,7 +29,7 @@ export default function SignUp(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        onAuth("http://localhost:2000/api/post/signup" , formData , "/signin")
+        onAuth("https://blogify-1edn.onrender.com/api/post/signup" , formData , "/signin")
     }
 
     return (
