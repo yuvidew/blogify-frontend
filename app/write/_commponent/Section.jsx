@@ -18,11 +18,11 @@ export const Section = () => {
 
     useEffect(() => {
         const userId = JSON.parse(localStorage.getItem('blogify_user'))
-        fetchData(`http://localhost:2000/api/get/blogs/${userId._id}`)
+        fetchData(`https://blogify-server-j4lx.onrender.com/api/get/blogs/${userId._id}`)
     }, [])
 
     return (
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
             <CreateBlogBtn/>
             {data != null && data.map(ele => (
                 <BlogCard key={ele._id} title = {ele.title} category={ele.category} />

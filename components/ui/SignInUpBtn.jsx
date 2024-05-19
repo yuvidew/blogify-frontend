@@ -7,7 +7,7 @@ import { User } from 'lucide-react'
 export const SignInUpBtn = () => {
     const [isUser , setInUser] = useState(null)
     useEffect(() => {
-        let data =  localStorage.getItem("blogify_user_token ")
+        let data =  localStorage.getItem("blogify_user_token")
         setInUser(data);
     } , [])
 

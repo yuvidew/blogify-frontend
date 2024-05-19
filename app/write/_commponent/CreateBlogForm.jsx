@@ -25,7 +25,7 @@ export const CreateBlogForm = () => {
             category : category,
             id : JSON.parse(localStorage.getItem("blogify_user"))._id
         }
-        createBlog('http://localhost:2000/api/post/createBlog' , blogInfo)
+        createBlog('https://blogify-server-j4lx.onrender.com/api/post/createBlog' , blogInfo)
     }
 
     return (
