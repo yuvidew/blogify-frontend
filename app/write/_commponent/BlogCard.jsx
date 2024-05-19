@@ -24,7 +24,7 @@ import { SnackbarProvider, enqueueSnackbar } from 'notistack'
 export const BlogCard = ({title , category , id}) => {
     const onDelete = async () => {
         try {
-            const res = await axios.delete(`http://localhost:2000/api/delete/blogs/:${id}`)
+            const res = await axios.delete(`https://blogify-server-j4lx.onrender.com/api/delete/blogs/:${id}`)
             if(res.status == 201){
                 enqueueSnackbar(res.data.msg , {variant : "success"})
                 window.location.reload()
