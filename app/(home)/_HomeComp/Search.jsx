@@ -17,6 +17,7 @@ export const Search = () => {
     }
 
     return (
+        
         <div className=' flex items-center bg-stone-200 dark:bg-stone-100 text-stone-900 justify-start gap-1 px-2 rounded-lg'>
             <SearchIcon 
                 className=' w-4 h-4 text-stone-800'

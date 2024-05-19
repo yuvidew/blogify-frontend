@@ -8,6 +8,7 @@ import { Search } from '../../app/(home)/_HomeComp/Search'
 import { Button } from '@/components/ui/button'
 import { Edit } from 'lucide-react'
 import { SignInUpBtn } from '@/components/ui/SignInUpBtn'
+import { SMSearchBar } from '@/components/ui/SMSearchBar'
 
 export const Header = () => {
     return (
@@ -27,7 +28,12 @@ export const Header = () => {
                         />
                     </div>
                     <div className='h-[5rem] flex items-center justify-start'>
-                        <Search/>
+                        <div className='lg:block md:hidden hidden'>
+                            <Search/>
+                        </div>
+                        <div className='lg:hidden md:block block'>
+                            <SMSearchBar/>
+                        </div>
                     </div>
                 </div>
                 <div className=' flex items-center justify-end gap-3'>
