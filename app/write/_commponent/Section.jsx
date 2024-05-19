@@ -5,14 +5,14 @@ import { BlogCard } from './BlogCard'
 import axios from 'axios'
 
 export const Section = () => {
-    const [data , setData] = useState(null)
+    const [data , setData] = useState([])
 
     const fetchData = async (url) => {
         try {
             const res = await axios.get(url)
             setData(res.data)
         } catch (error) {
-            setData(null)
+            setData([])
         }
     }
 
@@ -24,9 +24,14 @@ export const Section = () => {
     return (
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
             <CreateBlogBtn/>
-            {data != null && data.map(ele => (
-                <BlogCard key={ele._id} title = {ele.title} category={ele.category} />
-            ))}
+            {data.length != 0 
+            ? ( data.map(ele => (
+                <BlogCard key={ele._id} title = {ele.title} category={ele.category} id = {ele._id} />
+            )))
+            : (
+                <p>Loading...</p>
+            )
+            }
         </div>
     )
 }
