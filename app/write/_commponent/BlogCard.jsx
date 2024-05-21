@@ -61,7 +61,7 @@ export const BlogCard = ({title , category , id}) => {
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
-                <Link href={'/'}>
+                <Link href={`/write/${id}`}>
                     <CardHeader className = "flex items-center justify-center h-[70%] mt-3">
                         <Image 
                             src={logoDark} 
