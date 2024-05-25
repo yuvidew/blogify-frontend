@@ -15,6 +15,7 @@ export const Header = () => {
         <header className=' container w-[100%]'>
             <main className='flex items-center justify-between'>
                 <div className='flex items-center justify-start gap-5'>
+                <Link href={'/'} >
                     <div className='h-[5rem]  flex items-center justify-start'>
                         <Image 
                             src={logo} 
@@ -27,6 +28,7 @@ export const Header = () => {
                             alt='logo'
                         />
                     </div>
+                </Link>
                     <div className='h-[5rem] flex items-center justify-start'>
                         <div className='lg:block md:hidden hidden'>
                             <Search/>
