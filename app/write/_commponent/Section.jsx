@@ -21,6 +21,8 @@ export const Section = () => {
         fetchData(`https://blogify-server-j4lx.onrender.com/api/get/blogs/${userId._id}`)
     }, [])
 
+    console.log(data);
+
     return (
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
             <CreateBlogBtn/>

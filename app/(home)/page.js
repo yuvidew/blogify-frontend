@@ -1,4 +1,5 @@
 import { Header } from "@/components/ui/Header";
+import { Section } from "./_HomeComp/Section";
 
 export default function Home() {
   return (
@@ -6,7 +7,9 @@ export default function Home() {
       <div>
         <Header/>
       </div>
-
+      <div className=" container">
+        <Section/>
+      </div>
     </div>
   )
 }

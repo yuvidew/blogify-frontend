@@ -22,6 +22,7 @@ import { SnackbarProvider, enqueueSnackbar } from 'notistack'
 
 
 export const BlogCard = ({title , category , id}) => {
+    console.log("object" , id);
     const onDelete = async () => {
         try {
             const res = await axios.delete(`https://blogify-server-j4lx.onrender.com/api/delete/blogs/:${id}`)

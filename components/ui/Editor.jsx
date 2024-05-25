@@ -13,6 +13,7 @@ export const Editor = (
         editable
     }
 ) => {
+    console.log(initialContent);
     const {resolvedTheme} = useTheme()
     const editor = useCreateBlockNote({
         editable,
@@ -23,12 +24,13 @@ export const Editor = (
     return (
         <div>
             <BlockNoteView
+                initialContent = {initialContent}
                 editor={editor}
                 theme={ resolvedTheme === "dark" ?  "dark" : "light"}
                 onChange={() => {
-                // console.log(editor.document)
                 onChange(JSON.stringify(editor.document , null , 2))
                 }}
+                
             />
         </div>
     )
