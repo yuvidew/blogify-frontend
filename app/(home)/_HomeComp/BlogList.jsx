@@ -1,4 +1,3 @@
-import { CircleUserRound, User } from 'lucide-react'
 import React from 'react'
 import { BlogCard } from './BlogCard'
 
@@ -16,6 +15,7 @@ export const BlogList = (
                     data.map((ele) => (
                         <BlogCard 
                             key={ele._id} 
+                            id = {ele._id}
                             title={ele.title}
                             userId={ele.userId}
                             content={ele.description}

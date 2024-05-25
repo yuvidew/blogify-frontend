@@ -21,7 +21,7 @@ export const Section = () => {
     }
 
     useEffect(() => {
-        fetchData(`http://localhost:2000/api/get/blogs`)
+        fetchData(`https://blogify-server-j4lx.onrender.com/api/get/blogs`)
     } , [])
 
 
