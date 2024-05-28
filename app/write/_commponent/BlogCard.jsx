@@ -19,10 +19,12 @@ import Link from 'next/link'
 import { EllipsisVertical, Trash } from 'lucide-react'
 import axios from 'axios'
 import { SnackbarProvider, enqueueSnackbar } from 'notistack'
+import { useRouter } from 'next/navigation'
+
 
 
 export const BlogCard = ({title , category , id}) => {
-    console.log("object" , id);
+    const router = useRouter()
     const onDelete = async () => {
         try {
             const res = await axios.delete(`https://blogify-server-j4lx.onrender.com/api/delete/blogs/:${id}`)
@@ -35,11 +37,20 @@ export const BlogCard = ({title , category , id}) => {
             
         }
     }
+    
+    const onSwitch = () => {
+        if(!localStorage.getItem("blogify_user_token")){
+            enqueueSnackbar("Login or sign up then you create the blog" , {variant : "warning"})
+        }else{
+            router.push(`/write/${id}`)
+        }
+    } 
+
     return (
         <SnackbarProvider maxSnack={3}  autoHideDuration={3000} style={{
             fontSize : '1rem'
         }}>
-            <Card className = "dark:bg-stone-100 relative h-[20rem] bg-slate-200 shadow-xl text-stone-900">
+            <Card className = "dark:bg-stone-100 cursor-pointer relative h-[20rem] bg-slate-200 shadow-xl text-stone-900">
                 <div className=' absolute w-[100%] p-4 flex items-center justify-between'>
                     <Button 
                         variant = "secondary" 
@@ -62,7 +73,7 @@ export const BlogCard = ({title , category , id}) => {
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
-                <Link href={`/write/${id}`}>
+                <div onClick={onSwitch} className=''>
                     <CardHeader className = "flex items-center justify-center h-[70%] mt-3">
                         <Image 
                             src={logoDark} 
@@ -78,7 +89,7 @@ export const BlogCard = ({title , category , id}) => {
                     <CardFooter>
                         <h4 className=' text-[1.3rem] '>{title}</h4>
                     </CardFooter>
-                </Link>
+                </div>
             </Card>
         </SnackbarProvider>
     )

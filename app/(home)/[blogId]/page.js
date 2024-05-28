@@ -1,9 +1,10 @@
 import { Skeleton } from '@/components/ui/skeleton'
 import axios from 'axios'
-import { CircleUserRound } from 'lucide-react'
 import React from 'react'
 import { Content } from './_components/Content'
 import { CreatorName } from './_components/CreatorName'
+import { LikeBtn } from './_components/LikeBtn'
+import { CommitBox } from './_components/CommitBox'
 
 const fetchData = async (id) => {
     try {
@@ -21,7 +22,6 @@ const fetchData = async (id) => {
 
 export default async function BlogPage({params}){
     const data = await fetchData(params.blogId)
-    console.log(data);
 
     return (
         <div className='mt-5'>
@@ -29,9 +29,15 @@ export default async function BlogPage({params}){
             (
                 <article className=' relative'>
                     <CreatorName userId={data.userId} />
-                    <h1 className='text-[2.4rem] font-medium  '>{data.title}</h1>
+                    <div className=' flex justify-between'>
+                        <h1 className='text-[2.4rem] font-medium  '>{data.title}</h1>
+                        <LikeBtn id = {params.blogId} />
+                    </div>
                     <div className=' mt-3'>
                         <Content content={data.description} />
+                    </div>
+                    <div className=' border-t mt-4'>
+                        <CommitBox id = {params.blogId} />
                     </div>
                 </article>
             ) 

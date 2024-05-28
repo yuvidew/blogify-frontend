@@ -4,20 +4,19 @@ import Spinner from '@/components/ui/Spinner';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useFetch } from '@/hook/useFetch';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { FolderCheck } from 'lucide-react';
-import { useEffect } from 'react';
 
 export default function BlogIdPage({params}){
-    const [data , fetchData , addDescription , isTrue] = useFetch()
-    useEffect(() => {
-        fetchData(`https://blogify-server-j4lx.onrender.com/api/get/blog/${params.blogId}`)
-    }, [])
+    const {fetchData , addDescription } = useFetch();
+    const {data , isLoading} = useQuery({
+        queryKey : ["Blog" , params.blogId],
+        queryFn : () => fetchData(`https://blogify-server-j4lx.onrender.com/api/get/blog/${params.blogId}`)
+    })
 
-    const onChange = (description) => {
-        addDescription(`https://blogify-server-j4lx.onrender.com/api/patch/blog/${params.blogId}`,  description);
-    }
-
-    console.log(data);
+    const {mutate , isPending } = useMutation({
+        mutationFn : (description) => addDescription(`https://blogify-server-j4lx.onrender.com/api/patch/blog/${params.blogId}`,  description)
+    })
 
 
     return (
@@ -27,9 +26,9 @@ export default function BlogIdPage({params}){
                     className = " absolute right-0"
                     size = "sm"
                 >
-                    {isTrue ? <Spinner size={"lg"} /> : <FolderCheck  />}
+                    {isPending ? <Spinner size={"lg"} /> : <FolderCheck  />}
                 </Button>
-                {data.length !=0 ? (
+                {!isLoading ? (
                     <article className=''>
                         <div className='mb-5'>
                             <h1 className='text-[2rem]'>{data.title}</h1>
@@ -43,7 +42,7 @@ export default function BlogIdPage({params}){
                         </div>
                         <div className='mb-5'>
                             <Editor 
-                                onChange={onChange}
+                                onChange={mutate}
                                 initialContent={data.description}
                             />
                         </div>

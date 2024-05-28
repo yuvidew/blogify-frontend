@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { enqueueSnackbar } from 'notistack'
 import { useState } from 'react'
 
 export const useFetch = () => {
@@ -8,7 +9,7 @@ export const useFetch = () => {
     const fetchData = async (url) => {
         try {
             const res = await axios.get(url)
-            setData(res.data)
+            return res.data
         } catch (error) {
             return(null)
         }
@@ -32,5 +33,30 @@ export const useFetch = () => {
         }
     }
 
-    return [data , fetchData , addDescription , isTrue]
+    const addOpinion = async (url , data) => {
+        try {
+            const res = await axios.post(url , {
+                opinion : data
+            }) 
+
+            if(res.status == 201 && data == +1){
+                enqueueSnackbar("You like this blog" , {variant : "success"})
+            }else if(data == -1){
+                enqueueSnackbar("You dislike this blog" , {variant : "warning"})
+            }
+        } catch (error) {
+            enqueueSnackbar("Failed to add opinion" , {variant : "warning"})
+        }
+    }
+
+    const text = "hello"
+
+    return {
+        data , 
+        fetchData , 
+        addDescription , 
+        isTrue , 
+        addOpinion , 
+        text
+    }
 }

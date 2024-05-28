@@ -11,6 +11,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { SnackbarProvider } from 'notistack'
 import { useCreateBlog } from '@/hook/useCreateBlog'
+import { useMutation } from '@tanstack/react-query'
 
 
 export const CreateBlogForm = () => {
@@ -18,16 +19,20 @@ export const CreateBlogForm = () => {
     const [title , setTitle] = useState("")
     const [category , setCategory] = useState('')
 
-    
     const handleSubmit = () => {
         let blogInfo = {
             title : title,
             category : category,
             id : JSON.parse(localStorage.getItem("blogify_user"))._id
         }
-        createBlog('https://blogify-server-j4lx.onrender.com/api/post/createBlog' , blogInfo)
+        mutate(blogInfo)
     }
 
+    const {mutate} = useMutation({
+        mutationFn : (blogInfo) => createBlog('https://blogify-server-j4lx.onrender.com/api/post/createBlog' , blogInfo)
+    })
+
+    
     return (
         <SnackbarProvider maxSnack={3}  autoHideDuration={3000} style={{
             fontSize : '1rem'

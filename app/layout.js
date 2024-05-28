@@ -3,8 +3,9 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/Provider/ThemeProvider";
 import { ViewTransitions } from "next-view-transitions";
 import { Suspense } from "react";
-
+import { QueryProvider } from "@/components/Provider/QueryProvider";
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata = {
   title: "Blogify",
@@ -30,17 +31,19 @@ export default function RootLayout({ children }) {
     <ViewTransitions>
     <html lang="en">
       <body className={`${inter.className} dark:bg-[#171717]`}>
-      <Suspense fallback={<div>Loading...</div>}>
-      <ThemeProvider 
-          attribute = "class"
-          defaultTheme = "system"
-          enableSystem
-          disableTransitionOnChange
-          storageKey = "jotion-theme-2"
-      >
-        {children}
-      </ThemeProvider>
-      </Suspense>
+      <QueryProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+        <ThemeProvider 
+            attribute = "class"
+            defaultTheme = "system"
+            enableSystem
+            disableTransitionOnChange
+            storageKey = "jotion-theme-2"
+        >
+          {children}
+        </ThemeProvider>
+        </Suspense>
+      </QueryProvider>
       </body>
     </html>
     </ViewTransitions>
