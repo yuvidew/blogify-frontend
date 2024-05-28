@@ -33,6 +33,7 @@ export const CategoryBtn = ({
           <div className=' mt-5'>
             {btn.map((ele) => (
               <Button 
+                key={ele}
                 variant = {value == ele.toLocaleLowerCase() ? "default" : "secondary"}
                 onClick = {() => onCategoryFilter(ele.toLowerCase())}
                 className = "text-[#1f1f1f] mr-2 my-2"
