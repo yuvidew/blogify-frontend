@@ -55,6 +55,7 @@ export const CategoryBtn = ({
             <SheetDescription>
               {btn.map((ele) => (
                 <Button 
+                  key={ele}
                   variant = {value == ele.toLocaleLowerCase() ? "default" : "secondary"}
                   onClick = {() => onCategoryFilter(ele.toLowerCase())}
                   className = "text-[#1f1f1f] mr-2 my-2"
