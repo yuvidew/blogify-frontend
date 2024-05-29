@@ -3,7 +3,7 @@ import React from 'react'
 
 const SignInLayout = ({children}) => {
     return (
-        <div>
+        <div className=' pb-4'>
             <div>
                 <Header/>
             </div>

@@ -3,10 +3,10 @@ import React from 'react'
 
 const writeLayout = ({children}) => {
     return (
-        <div>
-        <div>
-            <Header/>
-        </div>
+        <div className='pb-4'>
+            <div>
+                <Header/>
+            </div>
             {children}
         </div>
     )

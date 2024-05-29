@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function BlogIdLayout ({children}) {
     return (
-        <div>
+        <div className=' pb-4'>
             <div>
                 <Header/>
             </div>
