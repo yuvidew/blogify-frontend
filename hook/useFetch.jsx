@@ -49,7 +49,19 @@ export const useFetch = () => {
         }
     }
 
-    const text = "hello"
+    const onDelete = async (url) => {
+        try {
+            const res = await axios.delete(url)
+            if(res.status == 201){
+                enqueueSnackbar(res.data.msg , {variant : "success"})
+                window.location.reload()
+            }
+        } catch (error) {
+            enqueueSnackbar("Failed To delete this blog!" , {variant : "warning"})
+            
+        }
+    }
+
 
     return {
         data , 
@@ -57,6 +69,6 @@ export const useFetch = () => {
         addDescription , 
         isTrue , 
         addOpinion , 
-        text
+        onDelete
     }
 }

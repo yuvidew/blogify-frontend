@@ -29,6 +29,7 @@ export const CreateBlogForm = () => {
     }
 
     const {mutate} = useMutation({
+        mutationKey : ["create blog"],
         mutationFn : (blogInfo) => createBlog('https://blogify-server-j4lx.onrender.com/api/post/createBlog' , blogInfo)
     })
 

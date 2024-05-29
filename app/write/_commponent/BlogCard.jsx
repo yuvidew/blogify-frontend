@@ -15,28 +15,23 @@ import logo from "@/public/blog-icon.png"
 import logoDark from "@/public/blog-icon-dark.png"
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import { EllipsisVertical, Trash } from 'lucide-react'
-import axios from 'axios'
 import { SnackbarProvider, enqueueSnackbar } from 'notistack'
 import { useRouter } from 'next/navigation'
+import { useFetch } from '@/hook/useFetch'
+import { useMutation } from '@tanstack/react-query'
+import Spinner from '@/components/ui/Spinner'
 
 
 
 export const BlogCard = ({title , category , id}) => {
     const router = useRouter()
-    const onDelete = async () => {
-        try {
-            const res = await axios.delete(`https://blogify-server-j4lx.onrender.com/api/delete/blogs/:${id}`)
-            if(res.status == 201){
-                enqueueSnackbar(res.data.msg , {variant : "success"})
-                window.location.reload()
-            }
-        } catch (error) {
-            enqueueSnackbar("Failed To delete this blog!" , {variant : "warning"})
-            
-        }
-    }
+    const {onDelete} = useFetch()
+
+    const {mutate , isPending} = useMutation({
+        mutationKey : [`delete blog ${id}`],
+        mutationFn : () => onDelete(`https://blogify-server-j4lx.onrender.com/api/delete/blogs/:${id}`)
+    })
     
     const onSwitch = () => {
         if(!localStorage.getItem("blogify_user_token")){
@@ -65,10 +60,14 @@ export const BlogCard = ({title , category , id}) => {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className = " p-0 ">
                             <DropdownMenuItem 
-                                onClick = {onDelete} 
+                                onClick = {mutate} 
                                 className = "flex items-center cursor-pointer gap-2 p-3 hover:bg-stone-800"
                             >
-                                <Trash className=' text-red-600 w-5 h-5' /> My Account
+                                {isPending ? <Spinner/> : (
+                                    <>
+                                        <Trash className=' text-red-600 w-5 h-5' /> Delete'
+                                    </>
+                                )}
                             </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
