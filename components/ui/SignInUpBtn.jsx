@@ -13,7 +13,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 
-export const SignInUpBtn = () => {
+export const SignInUpBtn = ({
+    className ,
+}) => {
     const [isUser , setInUser] = useState(null)
     useEffect(() => {
         let data = localStorage.getItem("blogify_user_token")
@@ -26,17 +28,19 @@ export const SignInUpBtn = () => {
     }
 
     return (
-        <div>
+        <div className={className}>
         {isUser ? (
-            <Link href={'/'} >
                 <DropdownMenu>
-                <DropdownMenuTrigger>
+                <DropdownMenuTrigger className='w-full'>
+                    <Link href={'/'} className='w-full'>
                     <Button 
                         variant = "default" 
                         size = "sm"
+                        className ="w-full"
                     >
-                        <User/>
+                        <User className='h-5 w-5' />
                     </Button>
+                </Link>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className = "w-[15rem] mt-3">
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -49,13 +53,13 @@ export const SignInUpBtn = () => {
                 </DropdownMenuContent>
                 </DropdownMenu>
 
-            </Link>
         ) : (
             <>
                 <Link href={'/signin'}>
                     <Button 
                         variant = "black"
                         size = "sm" 
+                        className = "w-full"
                     >
                         Sign In
                     </Button>
@@ -64,6 +68,7 @@ export const SignInUpBtn = () => {
                     <Button 
                         variant = "white" 
                         size = "sm" 
+                        className = "w-full"
                     >
                         Sign Up
                     </Button>

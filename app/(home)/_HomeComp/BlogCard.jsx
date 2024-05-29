@@ -50,7 +50,7 @@ export const BlogCard = ({
                     </div>
                 </CardHeader>
                 <CardContent className = "px-0 ">
-                    <h1 className='text-[2rem] font-medium  ' >{title}</h1>
+                    <h1 className='lg:text-[2rem] md:text-[2rem] text-[1.5rem] font-medium  ' >{title}</h1>
                     <Badge variant="secondary" className={" capitalize mt-3"}>{category}</Badge>
                 </CardContent>
             </Card>

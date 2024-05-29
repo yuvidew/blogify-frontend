@@ -20,19 +20,19 @@ export const LikeBtn = ({
             fontSize : '1rem'
         }}>
 
-            <div className=' flex items-center justify-end gap-5'>
+            <div className=' flex items-center lg:justify-end lg:mt-0 mt-4 gap-5'>
                 <Button 
                     size = "sm" 
                     onClick = {() => mutate('+1')}
                 >
-                    <ThumbsUp/>
+                    <ThumbsUp className='w-4 h-4' />
                 </Button>
 
                 <Button 
                     size = "sm" 
                     onClick = {() => mutate('-1')}
                 >
-                    <ThumbsDown/>
+                    <ThumbsDown className='w-4 h-4' />
                 </Button>
             </div>
         </SnackbarProvider>

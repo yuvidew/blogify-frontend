@@ -29,11 +29,12 @@ export default async function BlogPage({params}){
             (
                 <article className=' relative'>
                     <CreatorName userId={data.userId} />
-                    <div className=' flex justify-between'>
-                        <h1 className='text-[2.4rem] font-medium  '>{data.title}</h1>
+                    <div className=' lg:flex justify-between'>
+                        <h1 className='lg:text-[2.4rem] md:text-[1.8rem] text-[1.5rem] mt-4 font-medium  '>{data.title}</h1>
                         <LikeBtn id = {params.blogId} />
                     </div>
-                    <div className=' mt-3'>
+                    <hr className='my-4' />
+                    <div className=' lg:mt-3'>
                         <Content content={data.description} />
                     </div>
                     <div className=' border-t mt-4'>

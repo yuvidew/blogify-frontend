@@ -46,8 +46,8 @@ export const CategoryBtn = ({
         <div className='lg:hidden block'>
         <Sheet>
         <SheetTrigger>
-          <Button variant = "secondary" >
-            Filter <SlidersHorizontal />
+          <Button variant = "secondary" size = "sm" >
+            Filter <SlidersHorizontal className=' w-4 h-4 ml-3' />
           </Button>
         </SheetTrigger>
         <SheetContent className = "dark:bg-stone-900">

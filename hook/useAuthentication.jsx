@@ -4,7 +4,7 @@ import { enqueueSnackbar } from "notistack";
 
 export const useAuthentication = () => {
     const router = useRouter()
-    const onAuth = async (url ,  data , move) => {
+    const onAuth = async (url ,  data ) => {
         try {
             const res = await axios.post(url, data)
             if(res.status == 200 && res.data.msg){

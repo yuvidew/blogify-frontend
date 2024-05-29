@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Edit } from 'lucide-react'
 import { SignInUpBtn } from '@/components/ui/SignInUpBtn'
 import { SMSearchBar } from '@/components/ui/SMSearchBar'
+import { DropdownNav } from './DropdownNav'
 
 export const Header = () => {
     return (
@@ -38,9 +39,12 @@ export const Header = () => {
                         </div>
                     </div>
                 </div>
-                <div className=' flex items-center justify-end gap-3'>
+                <div className='lg:hidden md:hidden sm:block block'>
+                    <DropdownNav/>
+                </div>
+                <div className=' lg:flex items-center justify-end gap-3  md:flex sm:hidden hidden'>
                     <Link href={'/write'} >
-                        <Button variant = "secondary" >
+                        <Button variant = "secondary" size = "sm">
                             <Edit className='h-5 w-5 '/> {" "} <span className='lg:block md:hidden hidden ml-2'>Write</span>
                         </Button>
                     </Link>

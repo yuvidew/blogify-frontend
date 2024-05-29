@@ -9,12 +9,17 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { useAuthentication } from '@/hook/useAuthentication'
 import { SnackbarProvider } from 'notistack'
+import { useMutation } from '@tanstack/react-query'
+import Spinner from '@/components/ui/Spinner'
 
 export default function SignIn(){
-    const [onAuth] = useAuthentication()
+    const [onAuth] = useAuthentication();
     const [formData , setFormData] = useState({
         email : "",
         password : ""
+    })
+    const {mutate , isPending} = useMutation({
+        mutationFn : (formData) => onAuth("https://blogify-1edn.onrender.com/api/post/signin" , formData)
     })
 
     const handleChange = (e) => {
@@ -27,7 +32,7 @@ export default function SignIn(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        onAuth("https://blogify-1edn.onrender.com/api/post/signin" , formData , "/signup")
+        mutate(formData)
     }
 
     return (
@@ -72,7 +77,7 @@ export default function SignIn(){
                         variant = "black"
                         className = "bg-stone-900  hover:bg-stone-800 dark:text-stone-900 w-full mt-[1.5rem]"
                     >
-                        Sign In
+                        {isPending  ? <Spinner/> : "Sign In"}
                     </Button>
                     <p className=' text-slate-500 mt-[1rem] flex items-center gap-2'>
                         All ready you have a account? 

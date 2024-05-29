@@ -43,7 +43,7 @@ export const Section = () => {
 
     return (
         <div className="flex items-start gap-x-3 mt-5">
-            <div className="lg:w-[65%]">
+            <div className="lg:w-[65%] w-full">
                 <BlogList 
                     data = {data}
                     category={category}
